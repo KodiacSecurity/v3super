@@ -60,11 +60,13 @@ def handle_updates(updates):
         text = update["message"]["text"]
         chat = update["message"]["chat"]["id"]
         items = db.get_items(chat)  ##
-        if text == "/done":
+        if text == "/visa":
             keyboard = build_keyboard(items)
             send_message("Select an item to delete", chat, keyboard)
         elif text == "/BTT":
             send_message("Block Trade Tech!", chat)
+        elif text == "/help":
+            send_message("Skriv något för att lägga till i todo-listan, använd /visa för att få fram listan.", chat)
         elif text.startswith("/"):
             continue
         elif text in items:
